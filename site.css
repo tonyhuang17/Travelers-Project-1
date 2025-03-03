@@ -52,14 +52,14 @@ label {
 }
 
 /* Characters */
-#charactersList {
+#charactersList #planetsList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 0;
 }
 
-#charactersList div {
+#charactersList #planetsList div {
   padding: 10px;
   margin: 10px;
   border: 1px solid var(--dark2);
@@ -74,21 +74,21 @@ h1#name {
   margin: 50px;
 }
 
-#generalInfo {
+#generalInfo #ecology {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   border: 20px;
 }
 
-#generalInfo p {
+#generalInfo p, #ecology p {
   padding: 20px;
   margin: 10px;
   color: var(--dark2);
   background-color: var(--light2);
 }
 
-#generalInfo span {
+#generalInfo span, #ecology span {
   font-weight: bold;
   font-size: 1.1em;
 }
