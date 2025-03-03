@@ -2,7 +2,9 @@ let characters = [];
 let matchingCharacters = [];
 const charactersList = document.querySelector("#charactersList")
 
-document.addEventListener('DOMContentLoaded', getCharacters)
+document.addEventListener('DOMContentLoaded', function() {
+  getCharacters()
+});
 
 async function getCharacters() {
   let url = 'http://localhost:9001/api/characters';
@@ -29,6 +31,7 @@ const filterCharacters = () => {
 const renderCharacters = characters => {
   const divs = characters.map(character => {
     const el = document.createElement('div');
+    el.classList.add('a');
     el.addEventListener('click', () => goToCharacterPage(character.id));
     el.textContent = character.name;
     return el;
@@ -36,4 +39,4 @@ const renderCharacters = characters => {
   charactersList.replaceChildren(...divs)
 }
 
-const goToCharacterPage = id => window.location = `/character.html?id=${id}`
+const goToCharacterPage = id => window.location = `/character.html?id=${id}`;
