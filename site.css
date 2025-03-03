@@ -71,7 +71,11 @@ label {
 
 /* Character page */
 h1#name {
-  margin: 50px;
+  margin: 20px;
+}
+
+h2#genInfo, h2#ecology {
+  margin: 40px;
 }
 
 #generalInfo #ecology {
@@ -83,7 +87,7 @@ h1#name {
 
 #generalInfo p, #ecology p {
   padding: 20px;
-  margin: 10px;
+  margin: 50px;
   color: var(--dark2);
   background-color: var(--light2);
 }
