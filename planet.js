@@ -79,8 +79,7 @@ const renderPlanet = planet => {
   populationSpan.textContent = planet?.population;
 
   climateSpan.textContent = planet?.climate.charAt(0).toUpperCase() + planet?.climate.slice(1);
-  terrainSpan.textContent = planet?.terrain;
-  // uppercaseListElems(planet?.terrain);
+  terrainSpan.textContent = planet?.terrain.charAt(0).toUpperCase() + planet?.terrain.slice(1);
   gravitySpan.textContent = planet?.gravity;
 
   waterSpan.textContent = (planet?.surface_water === 1 ? 'Yes' : 'No');
@@ -91,7 +90,3 @@ const renderPlanet = planet => {
   charactersUl.innerHTML = charactersList.join("");
 
 }
-
-// function uppercaseListElems (listStr) {
-//   console.log(listStr.split(','));
-// }
