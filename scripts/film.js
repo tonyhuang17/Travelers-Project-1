@@ -6,6 +6,7 @@ let releaseDateSpan;
 let openingSpan;
 let charactersDiv;
 let planetsDiv;
+const baseUrl = `http://localhost:9001/api/films`;
 
 addEventListener('DOMContentLoaded', () => {
     titleH1 = document.querySelector('h1#title');
@@ -37,14 +38,14 @@ async function getFilm(id){
 
 //fetching the film
 async function fetchFilm(id){
-    const url = `http://localhost:9001/api/films/${id}`;
+    const url = `${baseUrl}/${id}`;
     return await fetch(url)
         .then(res => res.json())
 }
 
 //fetching characters in the film
 async function fetchCharacters(id){
-    const url = `http://localhost:9001/api/films/${id}/characters`;
+    const url = `${baseUrl}/${id}/characters`;
     const characters = await fetch(url)
         .then(res => res.json())
     return characters;
@@ -52,7 +53,7 @@ async function fetchCharacters(id){
 
 //Fetching planets for the film
 async function fetchPlanets(id){
-    const url = `http://localhost:9001/api/films/${id}/planets`;
+    const url = `${baseUrl}/${id}/planets`;
     const planets = await fetch(url)
         .then(res => res.json())
     return planets;
