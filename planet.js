@@ -7,6 +7,9 @@ let climateSpan;
 let terrainSpan;
 let gravitySpan;
 let waterSpan;
+
+let charactersUl;
+let filmsUl;
 const baseUrl = `http://localhost:9001/api`;
 
 // Runs on page load
@@ -22,7 +25,10 @@ addEventListener('DOMContentLoaded', () => {
   terrainSpan = document.querySelector('span#terrain');
   gravitySpan = document.querySelector('span#gravity');
   waterSpan = document.querySelector('span#has_water');
-  
+
+  filmsUl = document.querySelector('#films>ul');
+  charactersUl = document.querySelector('#characters>ul');
+
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
   getPlanet(id)
@@ -32,12 +38,9 @@ async function getPlanet(id) {
   let planet;
   try {
     planet = await fetchPlanet(id)
-    console.log(planet);
-    // Template for linkable elements
-    // character.homeworld = await fetchHomeworld(character)
     
-    // character.homeworld = await fetchHomeworld(character)
-    // character.films = await fetchFilms(character)
+    planet.films = await fetchFilms(id)
+    planet.characters = await fetchCharacters(id)
   }
   catch (ex) {
     console.error(`Error reading planet ${id} data.`, ex.message);
@@ -52,13 +55,20 @@ async function fetchPlanet(id) {
 
 }
 
-// Template async function for fetching info about
-// async function fetchHomeworld(character) {
-//   const url = `${baseUrl}/planets/${character?.homeworld}`;
-//   const planet = await fetch(url)
-//     .then(res => res.json())
-//   return planet;
-// }
+async function fetchFilms(id) {
+  const url = `${baseUrl}/planets/${id}/films`;
+  const films = await fetch(url)
+    .then(res => res.json())
+  return films;
+}
+
+async function fetchCharacters(id) {
+  const url = `${baseUrl}/planets/${id}/characters`;
+  const characters = await fetch(url)
+    .then(res => res.json())
+  return characters;
+}
+
 
 const renderPlanet = planet => {
   document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say their name
@@ -69,12 +79,20 @@ const renderPlanet = planet => {
   orbSpan.textContent = planet?.orbital_period;
   populationSpan.textContent = planet?.population;
 
-  climateSpan.textContent = planet?.climate;
+  climateSpan.textContent = planet?.climate.charAt(0).toUpperCase() + planet?.climate.slice(1);
   terrainSpan.textContent = planet?.terrain;
+  // uppercaseListElems(planet?.terrain);
   gravitySpan.textContent = planet?.gravity;
 
   waterSpan.textContent = (planet?.surface_water === 1 ? 'Yes' : 'No');
   
-  // const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
-  // filmsUl.innerHTML = filmsLis.join("");
+  const filmsList = planet?.films?.map(film =>`<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
+  filmsUl.innerHTML = filmsList.join("");
+  const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+  charactersUl.innerHTML = charactersList.join("");
+
 }
+
+// function uppercaseListElems (listStr) {
+//   console.log(listStr.split(','));
+// }
