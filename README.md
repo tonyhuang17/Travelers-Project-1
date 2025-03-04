@@ -1,4 +1,4 @@
-SWAPI Project 1
+# SWAPI Project 1
 
 This is a project by Anthony Huang and Ben Fiore.
 
