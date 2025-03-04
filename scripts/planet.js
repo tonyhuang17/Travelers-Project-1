@@ -84,9 +84,9 @@ const renderPlanet = planet => {
 
   waterSpan.textContent = (planet?.surface_water === 1 ? 'Yes' : 'No');
   
-  const filmsList = planet?.films?.map(film =>`<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
+  const filmsList = planet?.films?.map(film =>`<li><a href="/content/film.html?id=${film.id}">${film.title}</li>`)
   filmsUl.innerHTML = filmsList.join("");
-  const charactersList = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+  const charactersList = planet?.characters?.map(character => `<li><a href="/content/character.html?id=${character.id}">${character.name}</li>`)
   charactersUl.innerHTML = charactersList.join("");
 
 }

@@ -66,8 +66,8 @@ const renderFilm = film => {
     directorSpan.textContent = film?.director;
     releaseDateSpan.textContent = film?.release_date;
     openingSpan.textContent = film?.opening_crawl;
-    const charactersList = film?.characters?.map(character =>`<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+    const charactersList = film?.characters?.map(character =>`<li><a href="/content/character.html?id=${character.id}">${character.name}</li>`)
     charactersUl.innerHTML = charactersList.join("");
-    const planetsList = film?.planets?.map(planet =>`<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`)
+    const planetsList = film?.planets?.map(planet =>`<li><a href="/content/planet.html?id=${planet.id}">${planet.name}</li>`)
     planetsUl.innerHTML = planetsList.join("");
 }

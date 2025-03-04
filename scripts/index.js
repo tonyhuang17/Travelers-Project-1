@@ -39,4 +39,4 @@ const renderCharacters = characters => {
   charactersList.replaceChildren(...divs)
 }
 
-const goToCharacterPage = id => window.location = `/character.html?id=${id}`;
+const goToCharacterPage = id => window.location = `/content/character.html?id=${id}`;
