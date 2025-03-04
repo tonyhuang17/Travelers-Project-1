@@ -13,15 +13,21 @@ p {
 :root {
   font-family: Arial, Helvetica, sans-serif;
   --dark1: black;
-  --light1: white;
+  --light1: rgb(221, 178, 178);
   --dark2: darkblue;
   --light2: lightblue;
+  --light3: rgb(139, 199, 136);
   background-color: var(--light1);
   color: var(--dark1);
 }
 
+H1 { 
+  text-align: center ;
+  font-weight: bold;
+}
+
 button {
-  background-color: var(--light2);
+  background-color: var(--light3);
   color: var(--dark2);
   font-weight: bold;
   padding: 10px;
@@ -69,6 +75,7 @@ label {
   color: var(--dark2);
   background-color: var(--light2);
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Character page */
@@ -88,7 +95,7 @@ h1#name {
   padding: 20px;
   margin: 50px;
   color: var(--dark2);
-  background-color: var(--light2);
+  background-color: var(--light3);
 }
 
 #generalInfo span, 
