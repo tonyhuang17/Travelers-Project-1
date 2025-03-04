@@ -10,7 +10,7 @@ let waterSpan;
 
 let charactersUl;
 let filmsUl;
-const baseUrl = `http://localhost:9001/api`;
+const baseUrl = `http://localhost:9001/api/planets`;
 
 // Runs on page load
 addEventListener('DOMContentLoaded', () => {
@@ -45,25 +45,24 @@ async function getPlanet(id) {
   catch (ex) {
     console.error(`Error reading planet ${id} data.`, ex.message);
   }
-  renderPlanet(planet[0]);
+  renderPlanet(planet);
 
 }
 async function fetchPlanet(id) {
-  let planetUrl = `${baseUrl}/planets?id=${id}`;
+  let planetUrl = `${baseUrl}/${id}`;
   return await fetch(planetUrl)
     .then(res => res.json())
-
 }
 
 async function fetchFilms(id) {
-  const url = `${baseUrl}/planets/${id}/films`;
+  const url = `${baseUrl}/${id}/films`;
   const films = await fetch(url)
     .then(res => res.json())
   return films;
 }
 
 async function fetchCharacters(id) {
-  const url = `${baseUrl}/planets/${id}/characters`;
+  const url = `${baseUrl}/${id}/characters`;
   const characters = await fetch(url)
     .then(res => res.json())
   return characters;
@@ -88,7 +87,7 @@ const renderPlanet = planet => {
   
   const filmsList = planet?.films?.map(film =>`<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
   filmsUl.innerHTML = filmsList.join("");
-  const charactersLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+  const charactersList = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
   charactersUl.innerHTML = charactersList.join("");
 
 }
