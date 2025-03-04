@@ -12,13 +12,14 @@ p {
 
 :root {
   font-family: Arial, Helvetica, sans-serif;
+  --lighttext: white;
   --dark1: black;
   --light1: rgb(221, 178, 178);
   --dark2: darkblue;
   --light2: lightblue;
   --light3: rgb(139, 199, 136);
   background-color: var(--light1);
-  color: var(--dark1);
+  color: var(--lighttext);
 }
 
 H1 { 
@@ -55,6 +56,28 @@ label {
 .small {
   font-size: small;
   font-weight: normal;
+}
+
+#homeBody {
+  background-image: url('../media/images/home_background.jpg');
+}
+
+#planetBody {
+  background-image: url('../media/images/planet_background.jpg');
+}
+
+#filmBody {
+  background-image: url('../media/images/film_background.jpg');
+}
+
+#characterBody {
+  background-image: url('../media/images/character_background.jpg');
+}
+
+#planetBody, #filmBody, #characterBody {
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--lighttext);
 }
 
 /* Characters */
